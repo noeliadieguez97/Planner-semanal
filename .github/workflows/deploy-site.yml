@@ -13,8 +13,6 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
 
       - name: Checkout repository
@@ -45,13 +43,9 @@ jobs:
             echo "No build step needed for static site"
           fi
 
-      - name: Upload GitHub Pages artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: github-pages
-          path: |
-            build    # para React/Vue
-            .        # para sitios estáticos (HTML/CSS/JS)
-
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
+        with:
+          # Para React/Vue: build/
+          # Para sitio HTML simple: .
+          folder: build
