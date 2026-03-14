@@ -14,38 +14,19 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v5
 
-      - name: Checkout repository
-        uses: actions/checkout@v5
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: '20'
 
-      - name: Install dependencies
-        run: |
-          if [ -f package.json ]; then
-            npm install
-          else
-            echo "No dependencies to install"
-          fi
+      - run: |
+          if [ -f package.json ]; then npm install; fi
 
-      - name: Build project
-        run: |
-          if [ -f package.json ]; then
-            if npm run | grep -q build; then
-              npm run build
-            else
-              echo "No build script defined"
-            fi
-          else
-            echo "No build step needed for static site"
-          fi
+      - run: |
+          if [ -f package.json ] && npm run | grep -q build; then npm run build; fi
 
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+      - uses: actions/deploy-pages@v5
         with:
-          # Para React/Vue: build/
-          # Para sitio HTML simple: .
-          folder: build
+
+          artifact_name: github-pages
