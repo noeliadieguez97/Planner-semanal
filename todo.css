@@ -1,0 +1,116 @@
+header {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 32px;
+    text-align: center;
+    color: black;
+    margin-bottom: 30px;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    color: black;
+    background-color: rgb(255, 224, 250);
+    margin: 30px;
+}
+
+section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 24px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.semana {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 15px;
+}
+
+.dia {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.dia h3 {
+    text-align: center;
+}
+
+.input-tarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.agregar {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 6px;
+    background: #222;
+    color: white;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.agregar:hover {
+    background: #555;
+}
+
+.lista {
+    list-style: none;
+    padding: 0;
+}
+
+.lista li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f3f3f3;
+    padding: 8px;
+    border-radius: 6px;
+    margin-bottom: 6px;
+}
+
+.completada {
+    background: #c8f7c5;
+    border-left: 5px solid green;
+}
+
+.check {
+    margin-right: 6px;
+    color: green;
+    font-weight: bold;
+}
+
+.eliminar {
+    background: #e74c3c;
+    border: none;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.eliminar:hover {
+    background: #c0392b;
+}
+
+.dragging {
+    opacity: 0.5;
+}
+
+@media (max-width: 900px) {
+    .semana {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .semana {
+        grid-template-columns: 1fr;
+    }
+}
