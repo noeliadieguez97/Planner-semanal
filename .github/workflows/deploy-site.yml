@@ -6,6 +6,10 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  contents: write    
+  id-token: write       
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -33,6 +37,14 @@ jobs:
           if [ -f package.json ]; then
             if npm run | grep -q build; then
               npm run build
+            else
+              echo "No build script defined"
+            fi
+          else
+            echo "No build step needed for static site"
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
             else
               echo "No build script defined"
             fi
